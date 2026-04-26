@@ -1,0 +1,30 @@
+# macOS 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Obsidian 工作区状态（个人会话状态，不需要版本控制）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 防御性：万一以后接 Node 工具链
+node_modules/
+*.log
+npm-debug.log*
+
+# 个人草稿与实验（如果你想随手记的笔记不进 git，放这里）
+docs/dev/scratch/
+*.draft.md
+
+# 构建产物（demo 阶段不会有，先占位）
+dist/
+build/

@@ -16,6 +16,9 @@ Icon?
 *.swp
 *.swo
 
+# Claude Code 本地 session 配置 / worktree ref（机器本地，不入库）
+.claude/
+
 # 防御性：万一以后接 Node 工具链
 node_modules/
 *.log

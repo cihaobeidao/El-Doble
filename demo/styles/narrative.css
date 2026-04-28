@@ -119,6 +119,14 @@
   display: block;
 }
 
+.broadcast-paragraph {
+  margin: 0 0 var(--space-2);
+}
+
+.broadcast-paragraph:last-child {
+  margin-bottom: 0;
+}
+
 /* —— 选项区 —— */
 
 .choice {

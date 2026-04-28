@@ -67,7 +67,14 @@
         if (block.source) {
           wrapper.appendChild(el('span', 'broadcast-source', escapeHtml(block.source)));
         }
-        wrapper.appendChild(el('span', 'broadcast-body', inlineMarkdown(block.text)));
+        const body = el('div', 'broadcast-body');
+        // 按 \n\n 切段落，这样数据里写多段广播稿不用拆成多个 block
+        for (const para of String(block.text).split(/\n\n+/)) {
+          const trimmed = para.trim();
+          if (!trimmed) continue;
+          body.appendChild(el('p', 'broadcast-paragraph', inlineMarkdown(trimmed)));
+        }
+        wrapper.appendChild(body);
         return wrapper;
       }
 

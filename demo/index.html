@@ -6,43 +6,26 @@
   <title>《假总统》(El Doble) — Demo</title>
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/narrative.css">
 </head>
 <body>
-  <main id="app" class="app">
-    <header class="app-header">
-      <h1 class="app-title">《假总统》</h1>
-      <p class="app-subtitle"><em>El Doble</em> · demo 骨架</p>
-    </header>
-
-    <section class="placeholder" aria-label="占位区">
-      <p>骨架就绪。叙事内容由数据层与引擎驱动，尚未接入。</p>
-    </section>
-
-    <section id="debug-panel" class="debug-panel" aria-label="开发调试 · 存档 round-trip">
-      <header class="debug-panel-header">
-        <h2>开发调试 · 存档 round-trip</h2>
-        <p class="debug-panel-note">仅 M0 验证用，正式版本会移除。</p>
-      </header>
-
-      <div class="debug-actions">
-        <button type="button" data-action="new">新建初始状态</button>
-        <button type="button" data-action="mutate">修改测试值</button>
-        <button type="button" data-action="save">保存到 localStorage</button>
-        <button type="button" data-action="load">从 localStorage 加载</button>
-        <button type="button" data-action="clear">清档</button>
-        <button type="button" data-action="roundtrip">自检 round-trip</button>
-      </div>
-
-      <div id="debug-status" class="debug-status" role="status" aria-live="polite">
-        引擎尚未加载。
-      </div>
-
-      <pre id="debug-state" class="debug-state" aria-label="当前内存状态 JSON 快照"></pre>
-    </section>
+  <main id="stage" class="stage" aria-label="叙事舞台">
+    <!-- 由 runtime.js 注入场景 -->
   </main>
+
+  <div class="dev-tools">
+    <button type="button" id="dev-toggle" title="显示当前 state（按 . 也能开）">. state</button>
+  </div>
+
+  <div id="dev-modal" class="dev-modal" data-open="false" aria-hidden="true">
+    <div class="dev-modal-inner">
+      <pre id="dev-state"></pre>
+    </div>
+  </div>
 
   <script src="engine/state.js"></script>
   <script src="engine/storage.js"></script>
-  <script src="engine/main.js"></script>
+  <script src="engine/scene.js"></script>
+  <script src="engine/runtime.js"></script>
 </body>
 </html>

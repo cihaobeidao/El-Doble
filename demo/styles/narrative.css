@@ -1,0 +1,264 @@
+/* narrative.css —— 叙事文本的排版。
+   三种声音的视觉区分（06_主题与调性.md §二 原则 1）+ 一个变体：
+     narrator   场景叙述者 / 第三人称 / 普通衬线正文
+     inner      Saulito 内心独白 / 第二人称 / 斜体 + dim + 左侧细线
+     dialogue   叙述中的台词 / 破折号引导 + 缩进 + 可选说话人标签
+     broadcast  新闻 / 报刊 / 广播拟文体 / 无衬线 + 浅铜底 + 来源条
+   行内：**加粗** → <strong>；*西语词或强调* → <em>。 */
+
+.stage {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.act-marker {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--color-text-dim);
+  text-align: center;
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.scene-heading {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.10em;
+  color: var(--color-accent);
+  margin-block: var(--space-2) var(--space-1);
+}
+
+/* —— 块级声音 —— */
+
+.block {
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+/* narrator —— 默认 */
+.block.voice-narrator {
+  color: var(--color-text);
+}
+
+/* inner —— 二人称斜体内心 */
+.block.voice-inner {
+  color: var(--color-text-dim);
+  font-style: italic;
+  border-left: 2px solid var(--color-accent-2);
+  padding-left: var(--space-3);
+  margin-left: var(--space-2);
+}
+
+/* 在斜体块里，内嵌 <em> 反向变正体，以做强调区分 */
+.block.voice-inner em {
+  font-style: normal;
+  color: var(--color-text);
+}
+
+/* dialogue —— 角色台词，破折号引导 */
+.block.voice-dialogue {
+  padding-left: var(--space-4);
+}
+
+.dialogue-speaker {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+}
+
+.dialogue-line {
+  display: block;
+}
+
+.dialogue-line::before {
+  content: "— ";
+  color: var(--color-accent);
+}
+
+/* broadcast —— 新闻 / 广播拟文体 */
+.block.voice-broadcast {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.65;
+  background: rgba(192, 133, 82, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--space-3) var(--space-4);
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.broadcast-source {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.broadcast-body {
+  display: block;
+}
+
+/* —— 选项区 —— */
+
+.choice {
+  margin-block: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.choice-prompt {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.10em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+}
+
+.choice-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.choice-option {
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.choice-option:hover {
+  background: var(--color-surface-2);
+  border-color: var(--color-accent);
+}
+
+.chosen-line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--color-text-dim);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-accent);
+  margin-block: var(--space-4);
+}
+
+/* —— 结束卡 —— */
+
+.ending-card {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ending-card h3 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.10em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.ending-card p {
+  font-family: var(--font-serif);
+  color: var(--color-text-dim);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ending-card .ending-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* —— 调试浮层（开发期保留） —— */
+
+.dev-tools {
+  position: fixed;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 10;
+}
+
+.dev-tools button {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  opacity: 0.6;
+  background: var(--color-surface);
+}
+
+.dev-tools button:hover {
+  opacity: 1;
+}
+
+.dev-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(19, 17, 16, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: var(--space-6);
+}
+
+.dev-modal[data-open="true"] {
+  display: flex;
+}
+
+.dev-modal-inner {
+  max-width: 760px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.dev-modal-inner pre {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-dim);
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}

@@ -32,13 +32,13 @@
     state.day += 1;
     state.hour += 2;
     state.weekday = '星期三';
-    state.indicators.economia += 5;
-    state.indicators.tesoro -= 1;
+    state.indicators.economy += 5;
+    state.indicators.politicalCapital -= 1;
     state.factionAttitude.doce += 3;
     state.factionAttitude.calle_iglesia -= 2;
-    state.disguise.verosimilitud -= 4;
-    state.disguise.cordura -= 7;
-    state.disguise.sospecha.embajada_norte += 1;
+    state.replica.disguise -= 4;
+    state.replica.sanity -= 7;
+    state.replica.suspicion.embajada_norte += 1;
     state.addFlag('TEST_FLAG_ALPHA');
     state.addFlag('TEST_FLAG_BETA');
     state.mobilePool += 1;
@@ -57,7 +57,7 @@
         return;
       }
       mutateForTest(current);
-      setStatus('已对每一层施加测试改动（day / 指标 / 派系 / 伪装 / Sospecha / flags / 机动池）。', 'ok');
+      setStatus('已对每一层施加测试改动（天 / 国家指标 / 派系态度 / 替身 · 伪装度神智 / 怀疑度 / 隐性标记 / 机动池）。', 'ok');
       renderState();
     },
 
